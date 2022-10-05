@@ -3,11 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package javaapplication3;
-
-/**
- *
- * @author usuario
- */
 public class JavaApplication3 {
 
     /**
