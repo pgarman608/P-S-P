@@ -1,2 +1,0 @@
-Error: Could not find or load main class .\build\classes\javaapplication3\Sumatorio
-Caused by: java.lang.ClassNotFoundException: /\build\classes\javaapplication3\Sumatorio
