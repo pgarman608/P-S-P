@@ -19,7 +19,7 @@ public class Comprador extends Thread{
     @Override
     public void run(){
         int vueltas = (int)((Math.random()*(12 - 1))+1);
-        System.out.println(vueltas + " comprador ");
+        System.out.println(vueltas + " comprador");
         for (int i = vueltas; i > 0; i--) {
             this.recursos.eliminarRecurso();
             System.out.println("El comprador " +nombre+ " ha recogido su producto");

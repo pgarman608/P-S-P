@@ -19,7 +19,7 @@ public class Vendedor extends Thread{
     @Override
     public void run(){
         int vueltas = (int)((Math.random()*(12 - 1))+1);
-        System.out.println(vueltas + "Vendededor");
+        System.out.println(vueltas + " Vendededor");
         for (int i = vueltas; i > 0; i--) {
             char guardar = RECURSOS.charAt((int)((Math.random()*(RECURSOS.length() - 0))+0));
             this.recursos.añadirRecuso(guardar);
