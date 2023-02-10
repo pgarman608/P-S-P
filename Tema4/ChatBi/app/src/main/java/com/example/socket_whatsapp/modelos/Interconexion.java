@@ -5,6 +5,7 @@ import android.net.wifi.WifiManager;
 import android.text.format.Formatter;
 import android.util.Log;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -22,8 +23,12 @@ public class Interconexion {
     private Thread hiloImportar;
     private Informacion txtMSG;
 
+    private ServerSocket serverSocket;
+    private boolean exitServer;
+
     public Interconexion(){
         handler = new Handler();
+        exitServer =true;
     }
 
     /**
@@ -62,9 +67,9 @@ public class Interconexion {
             public void run() {
                 try{
                     //Crearemos el server socket para leer la información
-                    ServerSocket serverSocket = new ServerSocket(PUERTO);
+                    serverSocket = new ServerSocket(PUERTO);
                     //Tendremos un bucle infinito para que siempre esté recogiendo información
-                    while (true){
+                    while (exitServer){
                         //Preguntaré si el puerto esta en uso
                         Socket cliente = serverSocket.accept();
                         //Crearemos una conexion de entrada con el socket
@@ -92,5 +97,24 @@ public class Interconexion {
      */
     public Informacion getTxtMSG() {
         return txtMSG;
+    }
+
+    /**
+     * Cerraremos el Bucle del socket server cuando usemos este metodo
+     */
+    public void cerrarServer(){
+        this.exitServer = false;
+        try {
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Abrir el socket server
+     */
+    public void openServer(){
+        this.exitServer = true;
     }
 }

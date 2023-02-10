@@ -109,4 +109,28 @@ public class ActivivyMensaje extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().setNavigationBarColor(Color.parseColor("#000000"));
     }
+
+
+    /**
+     * Cerraremos el socket servidor cuando entre en la actividad
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        interconexion.openServer();
+    }
+    /**
+     * Cerraremos el socket servidor cuando se salga de la actividad
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        interconexion.cerrarServer();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        interconexion.cerrarServer();
+    }
 }
